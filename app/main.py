@@ -15,7 +15,7 @@ class Task(BaseModel):
 
 tasks: List[Task] = [
     Task(id=1, title="Learn CI/CD", done=False),
-    Task(id=2, title="Build FastAPI app", done=False)
+    Task(id=2, title="Build FastAPI app", done=False),
 ]
 
 next_id = 3
@@ -30,7 +30,7 @@ def root():
 def health():
     return {
         "status": "ok",
-        "uptime": time.time()
+        "uptime": time.time(),
     }
 
 
@@ -46,7 +46,7 @@ def create_task(task: Task):
     new_task = Task(
         id=next_id,
         title=task.title,
-        done=task.done
+        done=task.done,
     )
 
     next_id += 1

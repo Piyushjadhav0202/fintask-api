@@ -24,5 +24,8 @@ jobs:
       - name: Lint
         run: flake8 app/
 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
+
       - name: Run tests
         run: pytest --maxfail=1 --disable-warnings
