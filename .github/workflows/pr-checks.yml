@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Fix Python import path (VERY IMPORTANT)
+      # Fix import path
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
@@ -36,15 +36,3 @@ jobs:
       # Run tests with coverage
       - name: Run tests
         run: pytest --cov=app --cov-fail-under=60
-
-  label:
-    name: Auto Label PR
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-
-    steps:
-      - name: Label PR
-        uses: actions/labeler@v5
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
